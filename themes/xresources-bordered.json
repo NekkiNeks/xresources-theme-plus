@@ -192,7 +192,6 @@
                 "comment"
             ],
             "settings": {
-                "fontStyle": "italic",
                 "foreground": "#5B5955b0"
             }
         },
@@ -203,7 +202,7 @@
                 "constant.other.symbol"
             ],
             "settings": {
-                "foreground": "#6A8DCA"
+                "foreground": "#559A6A"
             }
         },
         {
@@ -232,16 +231,26 @@
                 "constant.language"
             ],
             "settings": {
-                "foreground": "#C4756E"
+                "foreground": "#A4A6AB"
             }
         },
         {
-            "name": "Variable",
+            "name": "Variable Declaration",
             "scope": [
-                "variable"
+                "variable.other.declaration"
             ],
             "settings": {
                 "foreground": "#A4A6AB"
+            }
+        },
+        {
+            "name": "Variable Usage",
+            "scope": [
+                "variable.other.readwrite",
+                "variable.other.object"
+            ],
+            "settings": {
+                "foreground": "#53CAD9"
             }
         },
         {
@@ -251,6 +260,18 @@
             ],
             "settings": {
                 "foreground": "#C4756E"
+            }
+        },
+        {
+            "name": "Object Property Key (general)",
+            "scope": [
+                "meta.object-literal.key",
+                "meta.object.member",
+                "entity.name.property",
+                "support.property"
+            ],
+            "settings": {
+                "foreground": "#CAB775"
             }
         },
         {
@@ -287,7 +308,16 @@
                 "keyword.operator"
             ],
             "settings": {
-                "foreground": "#9B8A4B"
+                "foreground": "#C4756E"
+            }
+        },
+        {
+            "name": "Storage Modifier",
+            "scope": [
+                "storage.modifier"
+            ],
+            "settings": {
+                "foreground": "#B577AC"
             }
         },
         {
@@ -362,7 +392,7 @@
                 "entity.name.function"
             ],
             "settings": {
-                "foreground": "#CAB775"
+                "foreground": "#A4A6AB"
             }
         },
         {

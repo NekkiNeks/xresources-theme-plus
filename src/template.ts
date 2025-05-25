@@ -314,7 +314,6 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 			name: 'Comment',
 			scope: ['comment'],
 			settings: {
-				fontStyle: 'italic',
 				foreground: colorMap.color0.hex() + 'b0',
 			},
 		},
@@ -323,7 +322,7 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 			name: 'String',
 			scope: ['string', 'constant.other.symbol'],
 			settings: {
-				foreground: colorMap.color4.hex(),
+				foreground: colorMap.color2.hex(),
 			},
 		},
 		{
@@ -345,15 +344,21 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 			name: 'Built-in constants',
 			scope: ['constant.language'],
 			settings: {
-				foreground: colorMap.color1.hex(),
+				foreground: colorMap.foreground.hex(),
 			},
 		},
-
 		{
-			name: 'Variable',
-			scope: ['variable'],
+			name: 'Variable Declaration',
+			scope: ['variable.other.declaration'],
 			settings: {
 				foreground: colorMap.foreground.hex(),
+			},
+		},
+		{
+			name: 'Variable Usage',
+			scope: ['variable.other.readwrite', 'variable.other.object'],
+			settings: {
+				foreground: colorMap.color14.hex(),
 			},
 		},
 		{
@@ -361,6 +366,13 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 			scope: ['variable.member'],
 			settings: {
 				foreground: colorMap.color1.hex(),
+			},
+		},
+		{
+			name: 'Object Property Key (general)',
+			scope: ['meta.object-literal.key', 'meta.object.member', 'entity.name.property', 'support.property'],
+			settings: {
+				foreground: colorMap.color11.hex(), // цвет для ключей свойств объекта
 			},
 		},
 		{
@@ -395,7 +407,14 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 			name: 'Operators',
 			scope: ['keyword.operator'],
 			settings: {
-				foreground: colorMap.color3.hex(),
+				foreground: colorMap.color1.hex(),
+			},
+		},
+		{
+			name: 'Storage Modifier',
+			scope: ['storage.modifier'],
+			settings: {
+				foreground: colorMap.color5.hex(),
 			},
 		},
 
@@ -462,7 +481,7 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 			name: 'Function name',
 			scope: ['entity.name.function'],
 			settings: {
-				foreground: colorMap.color11.hex(),
+				foreground: colorMap.foreground.hex(),
 			},
 		},
 		{
