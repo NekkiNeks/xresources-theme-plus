@@ -6,33 +6,32 @@ import * as Color from 'color';
 import template from './template';
 import { execSync } from 'child_process';
 
-var xresourcesColorsPath: string | undefined = vscode.workspace.getConfiguration().get("xresourcesTheme.xresourcesPath");
+var xresourcesColorsPath: string | undefined = vscode.workspace.getConfiguration().get('xresourcesTheme.xresourcesPath');
 expandPath();
 let autoUpdateWatcher: fs.FSWatcher | null = null;
 
 function expandPath() {
 	if (xresourcesColorsPath !== undefined) {
-		if (xresourcesColorsPath.startsWith("~")) {
+		if (xresourcesColorsPath.startsWith('~')) {
 			xresourcesColorsPath = os.homedir() + xresourcesColorsPath.substring(1);
-		} else if (! xresourcesColorsPath.startsWith("/")) {
-			xresourcesColorsPath = os.homedir() + "/" + xresourcesColorsPath;
+		} else if (!xresourcesColorsPath.startsWith('/')) {
+			xresourcesColorsPath = os.homedir() + '/' + xresourcesColorsPath;
 		}
 	}
 }
 
 function askForXresources(): Thenable<void> {
-	return vscode.window.showInputBox({prompt: "Path to .Xresources file", placeHolder: ".Xresources"}).then(x => {
+	return vscode.window.showInputBox({ prompt: 'Path to .Xresources file', placeHolder: '.Xresources' }).then(x => {
 		if (x !== undefined) {
 			xresourcesColorsPath = x;
-			vscode.workspace.getConfiguration().update("xresourcesTheme.xresourcesPath", x);
+			vscode.workspace.getConfiguration().update('xresourcesTheme.xresourcesPath', x);
 		}
 	});
 }
 
 export async function activate(context: vscode.ExtensionContext) {
-
-	xresourcesColorsPath = vscode.workspace.getConfiguration().get("xresourcesTheme.xresourcesPath");
-	if (xresourcesColorsPath === undefined || xresourcesColorsPath === "") {
+	xresourcesColorsPath = vscode.workspace.getConfiguration().get('xresourcesTheme.xresourcesPath');
+	if (xresourcesColorsPath === undefined || xresourcesColorsPath === '') {
 		await askForXresources();
 	}
 	expandPath();
@@ -43,7 +42,7 @@ export async function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 
 	// Start the auto update if enabled
-	if(vscode.workspace.getConfiguration().get('xresourcesTheme.autoUpdate')) {
+	if (vscode.workspace.getConfiguration().get('xresourcesTheme.autoUpdate')) {
 		generateColorThemes(); // Needed for when xresources palette updates while vscode isn't running
 		autoUpdateWatcher = autoUpdate();
 	}
@@ -51,82 +50,74 @@ export async function activate(context: vscode.ExtensionContext) {
 	// Toggle the auto update in real time when changing the extension configuration
 	vscode.workspace.onDidChangeConfiguration(event => {
 		let wsconfig = vscode.workspace.getConfiguration();
-		if (event.affectsConfiguration("xresourcesTheme.xresourcesPath")) {
-			console.log("path updated");
-			xresourcesColorsPath = wsconfig.get("xresourcesTheme.xresourcesPath");
+		if (event.affectsConfiguration('xresourcesTheme.xresourcesPath')) {
+			console.log('path updated');
+			xresourcesColorsPath = wsconfig.get('xresourcesTheme.xresourcesPath');
 			expandPath();
 			console.log(xresourcesColorsPath);
 			if (xresourcesColorsPath !== undefined) {
-				if (wsconfig.get("xresourcesTheme.autoUpdate")) {
-					console.log("reloading updater");
+				if (wsconfig.get('xresourcesTheme.autoUpdate')) {
+					console.log('reloading updater');
 					autoUpdateWatcher = autoUpdate();
 				}
 			}
 		}
-		if(event.affectsConfiguration('xresourcesTheme.autoUpdate')) {
-			console.log("autoUpdate changed");
-			if(wsconfig.get('xresourcesTheme.autoUpdate')) {
-				if(autoUpdateWatcher === null) {
+		if (event.affectsConfiguration('xresourcesTheme.autoUpdate')) {
+			console.log('autoUpdate changed');
+			if (wsconfig.get('xresourcesTheme.autoUpdate')) {
+				if (autoUpdateWatcher === null) {
 					autoUpdateWatcher = autoUpdate();
 				}
-			}
-			else if(autoUpdateWatcher !== null) {
+			} else if (autoUpdateWatcher !== null) {
 				autoUpdateWatcher.close();
 				autoUpdateWatcher = null;
 			}
 		}
 	});
-
 }
 
 export function deactivate() {
-
 	// Close the watcher if active
-	if(autoUpdateWatcher !== null) {
+	if (autoUpdateWatcher !== null) {
 		autoUpdateWatcher.close();
 	}
-
 }
-
 
 /**
  * Generates the theme from the current color palette and overwrites the last one
  */
 function generateColorThemes() {
 	// Import colors from xrdb
-	let colors: Color[] = new Array(16);
+	const colorMap: Record<string, Color> = {};
+
 	try {
-		let resources: string = execSync("xrdb -n " + xresourcesColorsPath).toString();
-		for (let i = 0; i < colors.length; i++) {
-			let colorrx: RegExp = new RegExp(`^.*color${i}.*$`, 'gim'); // pull full lines for given color
-			let matches = resources.match(colorrx);
-			if (matches !== null) {
-				let matchesString = matches.join('\n');
-				matches = matchesString.match(/code\..*#[a-f\d]{6}/gim); // find code.color statements if exists
-				if (matches !== null) {matchesString = matches[0];}
-				matches = matchesString.match(/#[a-f\d]{6}/gi); // pull out just color string
-				if (matches !== null) {
-					colors[i] = Color(matches[0]);
-				} else {
-					throw Error('No color available for color' + i.toString());
-				}
+		const raw = execSync(`xrdb -n ${xresourcesColorsPath}`).toString();
+
+		// Список нужных ключей
+		const keys = [...Array.from({ length: 16 }, (_, i) => `color${i}`), 'background', 'foreground', 'cursorColor'];
+
+		for (const key of keys) {
+			const regex = new RegExp(`${key}\\s*:\\s*(#[a-fA-F\\d]{6})`, 'i');
+			const match = raw.match(regex);
+
+			if (match && match[1]) {
+				colorMap[key] = Color(match[1]);
 			} else {
-				console.log('colorrx failed');
-				throw Error('No color available for color' + i.toString());
+				throw new Error(`Не удалось найти цвет для ${key}`);
 			}
 		}
-	} catch(error) {
-		vscode.window.showErrorMessage('Couldn\'t load colors from ' + xresourcesColorsPath || "(No path provided)" +', make sure all 16 colors are available');
+	} catch (error) {
+		vscode.window.showErrorMessage(`Не удалось загрузить цвета из ${xresourcesColorsPath || '(путь не указан)'}. Убедись, что все значения заданы.`);
 		return;
 	}
-		
+
 	// Generate the normal theme
-	const colorTheme = template(colors, false);
-	fs.writeFileSync(path.join(__dirname,'../themes/xresources.json'), JSON.stringify(colorTheme, null, 4));
-	
+	const colorTheme = template(colorMap, false);
+	fs.writeFileSync(path.join(__dirname, '../themes/xresources.json'), JSON.stringify(colorTheme, null, 4));
+
 	// Generate the bordered theme
-	const colorThemeBordered = template(colors, true);
-	fs.writeFileSync(path.join(__dirname,'../themes/xresources-bordered.json'), JSON.stringify(colorThemeBordered, null, 4));
+	const colorThemeBordered = template(colorMap, true);
+	fs.writeFileSync(path.join(__dirname, '../themes/xresources-bordered.json'), JSON.stringify(colorThemeBordered, null, 4));
 }
 
 /**
@@ -141,7 +132,7 @@ function autoUpdate(): fs.FSWatcher | null {
 	}
 
 	// Watch for changes in the color palette of xresources
-	if (xresourcesColorsPath !== undefined && xresourcesColorsPath !== "") {
+	if (xresourcesColorsPath !== undefined && xresourcesColorsPath !== '') {
 		generateColorThemes();
 
 		return fs.watch(xresourcesColorsPath, (event, filename) => {
@@ -154,11 +145,13 @@ function autoUpdate(): fs.FSWatcher | null {
 				setTimeout(() => {
 					fsWait = false;
 				}, 100);
-		
+
 				// Update the theme
-				console.log("Generating themes");
+				console.log('Generating themes');
 				generateColorThemes();
 			}
 		});
-    } else {return null;}
+	} else {
+		return null;
+	}
 }
