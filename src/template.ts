@@ -44,7 +44,7 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 		'inputValidation.warningBorder': colorMap.color3.hex(),
 
 		// SCROLLBAR CONTROL
-		'scrollbar.shadow': colorMap.color0.hex() + '33',
+		'scrollbar.shadow': colorMap.background.darken(0.3).hex() + 55,
 		'scrollbarSlider.background': colorMap.foreground.hex() + '44',
 		'scrollbarSlider.hoverBackground': colorMap.foreground.hex() + '77',
 		'scrollbarSlider.activeBackground': colorMap.foreground.hex() + '92',
@@ -101,11 +101,15 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 		'tab.unfocusedInactiveForeground': colorMap.foreground.hex() + '99',
 
 		// EDITOR
-		'editor.background': bordered ? colorMap.background.lighten(0.2).hex() : colorMap.background.hex(),
+		'editor.background': bordered ? colorMap.background.lighten(0.05).hex() : colorMap.background.hex(),
 		'editor.foreground': colorMap.foreground.hex(),
 		'editorLineNumber.foreground': colorMap.color0.hex() + '92',
 		'editorLineNumber.activeForeground': colorMap.color0.hex(),
-		'editorCursor.foreground': colorMap.color1.hex(),
+		'editorCursor.foreground': colorMap.cursorColor.hex(),
+
+		// Editor sticky header under tabs
+		'editorStickyScroll.background': colorMap.background.hex(),
+		'editorStickyScrollHover.background': colorMap.background.lighten(0.2).hex(),
 
 		'editor.selectionBackground': colorMap.color0.hex() + '77',
 		'editor.inactiveSelectionBackground': colorMap.color0.hex() + '44',
@@ -319,7 +323,7 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 			name: 'String',
 			scope: ['string', 'constant.other.symbol'],
 			settings: {
-				foreground: colorMap.color10.hex(),
+				foreground: colorMap.color4.hex(),
 			},
 		},
 		{
@@ -381,7 +385,7 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 			name: 'Keyword',
 			scope: ['keyword'],
 			settings: {
-				foreground: colorMap.color11.hex(),
+				foreground: colorMap.color5.hex(),
 			},
 		},
 
@@ -440,7 +444,7 @@ export default (colorMap: Record<string, Color>, bordered: boolean) => ({
 			name: 'Lambda arrow',
 			scope: ['storage.type.function'],
 			settings: {
-				foreground: colorMap.color11.hex(),
+				foreground: colorMap.color5.hex(),
 			},
 		},
 		{
