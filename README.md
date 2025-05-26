@@ -2,13 +2,9 @@
 
 This extensions for Visual Studio Code adds a **real time updated theme** that is dynamically generated from the color palette in your existing Xresources file. This fork just adds some changes for `.Xresources` properties, such as `*.background`, `*.foreground` and `*.cursorColor`. I also added some styling minor changes as shadows, shades of some colors and colors of syntax tokens. I Also changed icon as a little joke about simplified gradient logos trend 😛
 
-<!-- ## Screenshots
 
-![Example 1](https://raw.githubusercontent.com/dlasagno/vscode-wal-theme/master/screenshots/1.png)
+![Example 1](./screenshots/screenshot.jpg)
 
-![Example 2](https://raw.githubusercontent.com/dlasagno/vscode-wal-theme/master/screenshots/2.png)
-
-![Example 3](https://raw.githubusercontent.com/dlasagno/vscode-wal-theme/master/screenshots/3.png) -->
 
 ## Features
 
