@@ -1,19 +1,19 @@
 {
-	"name": "xresources-theme",
-	"displayName": "Xresources Theme",
-	"description": "A theme generated with Xresources color palette",
-	"publisher": "JackVandergriff",
-	"author": "Daniele Lasagno, Jack Vandergriff",
+	"name": "xresources-theme-plus",
+	"displayName": "Xresources Theme plus",
+	"description": "Fork of a a theme generated with Xresources color palette. Added new Xres variables.",
+	"publisher": "NekkiNeks",
+	"author": "Daniele Lasagno, Jack Vandergriff, Nekki Neks",
 	"license": "MIT",
 	"version": "1.0.1",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/JackVandergriff/vscode-xresources-theme"
+		"url": "https://github.com/NekkiNeks/xresources-theme-plus"
 	},
 	"bugs": {
-		"url": "https://github.com/JackVandergriff/vscode-xresources-theme/issues"
+		"url": "https://github.com/NekkiNeks/xresources-theme-plus/issues"
 	},
-	"homepage": "https://github.com/JackVandergriff/vscode-xresources-theme#readme",
+	"homepage": "https://github.com/NekkiNeks/xresources-theme-plus#readme",
 	"engines": {
 		"vscode": "^1.38.0"
 	},
