@@ -2,7 +2,6 @@ import * as Color from 'color';
 
 export default (colors: Record<string, Color>, bordered: boolean) => {
 	colors.backgroundDarken = colors.background.darken(0.05);
-	colors.color8darken = colors.color8.darken(0.1);
 
 	return {
 		type: 'dark',
@@ -32,13 +31,13 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			// DROPDOWN CONTROL
 			'dropdown.background': colors.background.lighten(0.2).hex(),
 			'dropdown.foreground': colors.foreground.hex() + '99',
-			'dropdown.border': colors.color8darken.hex() + '77',
+			'dropdown.border': colors.color8.hex() + '77',
 
 			// INPUT CONTROL
 			'input.background': colors.background.lighten(0.2).hex(),
-			'input.border': colors.color8darken.hex() + '55',
+			'input.border': colors.color8.hex() + '55',
 			'input.foreground': colors.foreground.hex(),
-			'input.placeholderForeground': colors.color8darken.hex() + '77',
+			'input.placeholderForeground': colors.color8.hex() + '77',
 			'inputOption.activeBorder': colors.color1.hex(),
 			'inputValidation.errorBackground': colors.background.hex(),
 			'inputValidation.errorBorder': colors.color4.hex(),
@@ -61,40 +60,40 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			'progressBar.background': colors.color1.hex(),
 
 			// LISTS AND TREES
-			'list.activeSelectionBackground': colors.color8darken.hex() + '33',
+			'list.activeSelectionBackground': colors.color8.hex() + '33',
 			'list.activeSelectionForeground': colors.foreground.hex(),
-			'list.focusBackground': colors.color8darken.hex() + '33',
+			'list.focusBackground': colors.color8.hex() + '33',
 			'list.focusForeground': colors.foreground.hex() + '99',
 			'list.highlightForeground': colors.color1.hex(),
-			'list.hoverBackground': colors.color8darken.hex() + '33',
+			'list.hoverBackground': colors.color8.hex() + '33',
 			'list.hoverForeground': colors.foreground.hex() + '99',
-			'list.inactiveSelectionBackground': colors.color8darken.hex() + '33',
+			'list.inactiveSelectionBackground': colors.color8.hex() + '33',
 			'list.inactiveSelectionForeground': colors.foreground.hex() + '99',
 			'list.invalidItemForeground': colors.foreground.hex() + '77',
 
 			// ACTIVITY BAR
 			'activityBar.background': colors.background.hex(),
-			'activityBar.foreground': colors.color8darken.hex(),
-			'activityBar.border': bordered ? colors.color8darken.hex() + '33' : colors.background.hex(),
+			'activityBar.foreground': colors.color8lighten.hex(),
+			'activityBar.border': bordered ? colors.color8.hex() + '33' : colors.background.hex(),
 			'activityBarBadge.background': colors.color1.hex(),
 			'activityBarBadge.foreground': colors.background.hex(),
 
 			// SIDE BAR
 			'sideBar.background': colors.background.hex(),
-			'sideBar.border': bordered ? colors.color8darken.hex() + '33' : colors.background.hex(),
+			'sideBar.border': bordered ? colors.color8.hex() + '33' : colors.background.hex(),
 			'sideBarTitle.foreground': colors.foreground.hex() + '99',
 			'sideBarSectionHeader.background': colors.background.hex(),
 			'sideBarSectionHeader.foreground': colors.foreground.hex() + '99',
 
 			// EDITOR GROUPS & TABS
-			'editorGroup.border': colors.color8darken.hex() + '33',
+			'editorGroup.border': colors.color8.hex() + '33',
 			//'editorGroup.background': colors.background.lighten(0.20).hex(), // deprecated
 			'editorGroupHeader.noTabsBackground': colors.background.hex(),
 			'editorGroupHeader.tabsBackground': colors.background.hex(),
-			'editorGroupHeader.tabsBorder': bordered ? colors.color8darken.hex() + '33' : colors.background.hex(),
+			'editorGroupHeader.tabsBorder': bordered ? colors.color8.hex() + '33' : colors.background.hex(),
 			'tab.activeBackground': bordered ? colors.background.lighten(0.2).hex() : colors.background.hex(),
 			'tab.activeForeground': colors.foreground.hex(),
-			'tab.border': bordered ? colors.color8darken.hex() + '33' : colors.background.hex(),
+			'tab.border': bordered ? colors.color8.hex() + '33' : colors.background.hex(),
 			'tab.activeBorder': bordered ? undefined : colors.color1.hex(),
 			'tab.activeBorderTop': bordered ? colors.color1.hex() : undefined,
 			'tab.unfocusedActiveBorder': bordered ? undefined : colors.foreground.hex() + '99',
@@ -107,27 +106,27 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			// EDITOR
 			'editor.background': bordered ? colors.backgroundDarken.hex() : colors.background.hex(),
 			'editor.foreground': colors.foreground.hex(),
-			'editorLineNumber.foreground': colors.color8darken.hex() + '92',
-			'editorLineNumber.activeForeground': colors.color8darken.hex(),
+			'editorLineNumber.foreground': colors.color8.hex() + '92',
+			'editorLineNumber.activeForeground': colors.color8.hex(),
 			'editorCursor.foreground': colors.cursorColor.hex(),
 
 			// Editor sticky header under tabs
 			'editorStickyScroll.background': colors.background.hex(),
 			'editorStickyScrollHover.background': colors.background.lighten(0.2).hex(),
 
-			'editor.selectionBackground': colors.color8darken.hex() + '77',
-			'editor.inactiveSelectionBackground': colors.color8darken.hex() + '44',
-			'editor.selectionHighlightBackground': colors.color8darken.hex() + '44',
-			'editor.selectionHighlightBorder': colors.color8darken.hex(),
+			'editor.selectionBackground': colors.color8.hex() + '77',
+			'editor.inactiveSelectionBackground': colors.color8.hex() + '44',
+			'editor.selectionHighlightBackground': colors.color8.hex() + '44',
+			'editor.selectionHighlightBorder': colors.color8.hex(),
 
-			'editor.wordHighlightBackground': colors.color8darken.hex() + '44',
+			'editor.wordHighlightBackground': colors.color8.hex() + '44',
 			'editor.wordHighlightStrongBackground': colors.color2.hex() + '77',
 
 			'editor.findMatchBackground': colors.color1.hex() + '0e',
 			'editor.findMatchBorder': colors.color1.hex(),
 			'editor.findMatchHighlightBackground': colors.color1.hex() + '0e',
 			'editor.findMatchHighlightBorder': colors.color1.hex() + '66',
-			'editor.findRangeHighlightBackground': colors.color8darken.hex() + '44',
+			'editor.findRangeHighlightBackground': colors.color8.hex() + '44',
 			'editor.findRangeHighlightBorder': colors.background.hex() + '00',
 
 			// 'editor.hoverHighlightBackground': '',
@@ -137,21 +136,21 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 
 			'editorLink.activeForeground': colors.color1.hex(),
 
-			'editor.rangeHighlightBackground': colors.color8darken.hex() + '33',
+			'editor.rangeHighlightBackground': colors.color8.hex() + '33',
 
-			'editorWhitespace.foreground': colors.color8darken.hex() + '66',
+			'editorWhitespace.foreground': colors.color8.hex() + '66',
 
-			'editorIndentGuide.background': colors.color8darken.hex() + '44',
-			'editorIndentGuide.activeBackground': colors.color8darken.hex() + '77',
+			'editorIndentGuide.background': colors.color8.hex() + '44',
+			'editorIndentGuide.activeBackground': colors.color8.hex() + '77',
 
-			'editorRuler.foreground': colors.color8darken.hex() + '44',
-			'editorCodeLens.foreground': colors.color8darken.hex() + 'b0',
+			'editorRuler.foreground': colors.color8.hex() + '44',
+			'editorCodeLens.foreground': colors.color8.hex() + 'b0',
 
-			'editorBracketMatch.background': colors.color8darken.hex() + '33',
-			'editorBracketMatch.border': colors.color8darken.hex() + '55',
+			'editorBracketMatch.background': colors.color8.hex() + '33',
+			'editorBracketMatch.border': colors.color8.hex() + '55',
 
 			// OVERVIEW RULER
-			'editorOverviewRuler.border': colors.color8darken.hex() + '33',
+			'editorOverviewRuler.border': colors.color8.hex() + '33',
 			'editorOverviewRuler.modifiedForeground': colors.color3.hex() + 'bb',
 			'editorOverviewRuler.addedForeground': colors.color2.hex() + 'bb',
 			'editorOverviewRuler.deletedForeground': colors.color4.hex() + 'bb',
@@ -159,8 +158,10 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			'editorOverviewRuler.warningForeground': colors.color1.hex(),
 
 			// ERRORS AND WARNINGS
-			'editorError.foreground': colors.color4.hex(),
-			'editorWarning.foreground': colors.color1.hex(),
+			'editorError.foreground': colors.color1.hex(),
+			'editorWarning.foreground': colors.color3.hex(),
+			'editorInfo.foreground': colors.color4.hex(),
+			'editorHint.foreground': colors.color2.hex(),
 
 			// GUTTER
 			'editorGutter.modifiedBackground': colors.color3.hex() + 'bb',
@@ -174,21 +175,21 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			// EDITOR WIDGET
 			'editorWidget.background': colors.background.lighten(0.2).hex(),
 			'editorSuggestWidget.background': colors.background.lighten(0.2).hex(),
-			'editorSuggestWidget.border': colors.color8darken.hex() + '22',
+			'editorSuggestWidget.border': colors.color8.hex() + '22',
 			'editorSuggestWidget.highlightForeground': colors.color1.hex(),
-			'editorSuggestWidget.selectedBackground': colors.color8darken.hex() + '33',
+			'editorSuggestWidget.selectedBackground': colors.color8.hex() + '33',
 			'editorHoverWidget.background': colors.background.lighten(0.2).hex(),
-			'editorHoverWidget.border': colors.color8darken.hex() + '22',
+			'editorHoverWidget.border': colors.color8.hex() + '22',
 
 			// DEBUG EXCEPTION
-			'debugExceptionWidget.border': colors.color8darken.hex() + '33',
+			'debugExceptionWidget.border': colors.color8.hex() + '33',
 			'debugExceptionWidget.background': colors.background.lighten(0.2).hex(),
 
 			// EDITOR MARKER
 			'editorMarkerNavigation.background': colors.background.lighten(0.2).hex(),
 
 			// PEEK VIEW
-			'peekView.border': colors.color8darken.hex() + '33',
+			'peekView.border': colors.color8.hex() + '33',
 			'peekViewEditor.background': colors.background.lighten(0.2).hex(),
 			'peekViewEditor.matchHighlightBackground': colors.color1.hex() + '44',
 			'peekViewResult.background': colors.background.lighten(0.2).hex(),
@@ -212,7 +213,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 
 			// Panel
 			'panel.background': bordered ? colors.backgroundDarken.hex() : colors.background.hex(),
-			'panel.border': colors.color8darken.hex() + '33',
+			'panel.border': colors.color8.hex() + '33',
 			'panelTitle.activeBorder': colors.color1.hex(),
 			'panelTitle.activeForeground': colors.foreground.hex(),
 			'panelTitle.inactiveForeground': colors.foreground.hex() + '99',
@@ -220,13 +221,13 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			// STATUS BAR
 			'statusBar.background': colors.background.hex(),
 			'statusBar.foreground': colors.foreground.hex(),
-			'statusBar.border': bordered ? colors.color8darken.hex() + '33' : colors.background.hex(),
+			'statusBar.border': bordered ? colors.color8.hex() + '33' : colors.background.hex(),
 			'statusBar.debuggingBackground': colors.color3.hex(),
 			'statusBar.debuggingForeground': colors.background.hex() + 'dd',
 			'statusBar.noFolderBackground': colors.background.lighten(0.2).hex(),
 			'statusBarItem.activeBackground': '#00000050',
 			'statusBarItem.hoverBackground': '#00000030',
-			'statusBarItem.prominentBackground': colors.color8darken.hex() + '33',
+			'statusBarItem.prominentBackground': colors.color8.hex() + '33',
 			'statusBarItem.prominentHoverBackground': '#00000030',
 
 			// TITLE BAR
@@ -234,7 +235,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			'titleBar.activeForeground': colors.foreground.hex(),
 			'titleBar.inactiveBackground': colors.background.hex(),
 			'titleBar.inactiveForeground': colors.foreground.hex(),
-			'titleBar.border': bordered ? colors.color8darken.hex() + '33' : colors.background.hex(),
+			'titleBar.border': bordered ? colors.color8.hex() + '33' : colors.background.hex(),
 
 			// MENU BAR
 			// 'menubar.selectionForeground': '?',
@@ -262,7 +263,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			'extensionButton.prominentHoverBackground': colors.color1.hex() + 'b3',
 
 			// QUICK PICKER
-			'pickerGroup.border': colors.color8darken.hex() + '33',
+			'pickerGroup.border': colors.color8.hex() + '33',
 			'pickerGroup.foreground': colors.foreground.hex() + 'b3',
 
 			// DEBUG
@@ -297,8 +298,8 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			'terminal.ansiBlue': colors.color4.hex(),
 			'terminal.ansiMagenta': colors.color5.hex(),
 			'terminal.ansiCyan': colors.color6.hex(),
-			'terminal.ansiWhite': colors.foreground.hex(),
-			'terminal.ansiBrightBlack': colors.color8darken.hex(),
+			'terminal.ansiWhite': colors.color7.hex(), // was foreground?
+			'terminal.ansiBrightBlack': colors.color8.hex(),
 			'terminal.ansiBrightRed': colors.color9.hex(),
 			'terminal.ansiBrightGreen': colors.color10.hex(),
 			'terminal.ansiBrightYellow': colors.color11.hex(),
@@ -318,7 +319,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 				name: 'Comment',
 				scope: ['comment'],
 				settings: {
-					foreground: colors.color8darken.hex() + 'b0',
+					foreground: colors.color8.hex() + 'b0',
 				},
 			},
 
@@ -341,7 +342,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 				name: 'Number',
 				scope: ['constant.numeric'],
 				settings: {
-					foreground: colors.color1.hex(),
+					foreground: colors.color13.hex(), // was color 1
 				},
 			},
 			{
@@ -376,7 +377,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 				name: 'Object Property Key (general)',
 				scope: ['meta.object-literal.key', 'meta.object.member', 'entity.name.property', 'support.property'],
 				settings: {
-					foreground: colors.color11.hex(), // цвет для ключей свойств объекта
+					foreground: colors.color11.hex(),
 				},
 			},
 			{
@@ -481,9 +482,15 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 			// ------
 			// Function/method names in definitions
 			// and calls
+
 			{
 				name: 'Function name',
-				scope: ['entity.name.function'],
+				scope: [
+					'entity.name.function',
+					'entity.name.function.declaration',
+					'meta.function entity.name.function',
+					'meta.function.declaration entity.name.function',
+				],
 				settings: {
 					foreground: colors.foreground.hex(),
 				},
@@ -492,12 +499,19 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 				name: 'Function arguments',
 				scope: ['variable.parameter', 'meta.parameter'],
 				settings: {
-					foreground: colors.color13.hex(),
+					foreground: colors.foreground.hex(),
 				},
 			},
 			{
 				name: 'Function call',
-				scope: ['variable.function', 'variable.annotation', 'meta.function-call.generic', 'support.function.go'],
+				scope: ['variable.function', 'variable.annotation', 'meta.function-call', 'source.function-call', 'support.function.go'],
+				settings: {
+					foreground: colors.color11.hex(),
+				},
+			},
+			{
+				name: 'Function call',
+				scope: ['meta.function-call variable.function', 'meta.function-call support.function', 'meta.function-call entity.name.function'],
 				settings: {
 					foreground: colors.color11.hex(),
 				},
@@ -506,7 +520,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 				name: 'Library function',
 				scope: ['support.function', 'support.macro'],
 				settings: {
-					foreground: colors.color1.hex(),
+					foreground: colors.color11.hex(),
 				},
 			},
 
@@ -616,7 +630,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 					'source.stylus support.type',
 				],
 				settings: {
-					foreground: colors.color8darken.hex() + 'b0',
+					foreground: colors.color8.hex() + 'b0',
 				},
 			},
 			{
@@ -631,7 +645,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 				name: 'Search Results Nums',
 				scope: ['constant.numeric.line-number.find-in-files - match'],
 				settings: {
-					foreground: colors.color8darken.hex() + 'b0',
+					foreground: colors.color8.hex() + 'b0',
 				},
 			},
 			{
@@ -654,6 +668,8 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 					foreground: colors.color4.hex(),
 				},
 			},
+			// ------
+			// Markups
 			{
 				name: 'Markup heading',
 				scope: ['markup.heading', 'markup.heading entity.name'],
@@ -712,7 +728,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 				settings: {
 					fontStyle: 'bold',
 					background: colors.foreground.hex() + '10',
-					foreground: colors.color8darken.hex() + 'b0',
+					foreground: colors.color8.hex() + 'b0',
 				},
 			},
 			{
@@ -777,8 +793,8 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 				name: 'Markdown - Line Break',
 				scope: ['text.html.markdown meta.dummy.line-break'],
 				settings: {
-					background: colors.color8darken.hex() + 'b0',
-					foreground: colors.color8darken.hex() + 'b0',
+					background: colors.color8.hex() + 'b0',
+					foreground: colors.color8.hex() + 'b0',
 				},
 			},
 			{
@@ -786,7 +802,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 				scope: ['punctuation.definition.markdown'],
 				settings: {
 					background: colors.foreground.hex(),
-					foreground: colors.color8darken.hex() + 'b0',
+					foreground: colors.color8.hex() + 'b0',
 				},
 			},
 		],
