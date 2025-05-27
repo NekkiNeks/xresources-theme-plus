@@ -73,7 +73,7 @@ export default (colors: Record<string, Color>, bordered: boolean) => {
 
 			// ACTIVITY BAR
 			'activityBar.background': colors.background.hex(),
-			'activityBar.foreground': colors.color8lighten.hex(),
+			'activityBar.foreground': colors.color8.hex(),
 			'activityBar.border': bordered ? colors.color8.hex() + '33' : colors.background.hex(),
 			'activityBarBadge.background': colors.color1.hex(),
 			'activityBarBadge.foreground': colors.background.hex(),
