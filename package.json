@@ -5,7 +5,7 @@
 	"publisher": "NekkiNeks",
 	"author": "Daniele Lasagno, Jack Vandergriff, Nekki Neks",
 	"license": "MIT",
-	"version": "1.0.4",
+	"version": "2.0.0",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/NekkiNeks/xresources-theme-plus"
@@ -55,15 +55,39 @@
 		},
 		"themes": [
 			{
-				"label": "Xresources",
+				"label": "Xresources Normal Light",
 				"uiTheme": "vs-dark",
-				"path": "./themes/xresources.json",
+				"path": "./themes/xresources_normal_light.json",
 				"_watch": true
 			},
 			{
-				"label": "Xresources Bordered",
+				"label": "Xresources Normal Dark",
 				"uiTheme": "vs-dark",
-				"path": "./themes/xresources-bordered.json",
+				"path": "./themes/xresources_normal_dark.json",
+				"_watch": true
+			},
+			{
+				"label": "Xresources Bordered Light",
+				"uiTheme": "vs-dark",
+				"path": "./themes/xresources_bordered_light.json",
+				"_watch": true
+			},
+			{
+				"label": "Xresources Bordered Dark",
+				"uiTheme": "vs-dark",
+				"path": "./themes/xresources_bordered_dark.json",
+				"_watch": true
+			},
+			{
+				"label": "Xresources Normal Mixed",
+				"uiTheme": "vs-dark",
+				"path": "./themes/xresources_normal_mixed.json",
+				"_watch": true
+			},
+			{
+				"label": "Xresources Bordered Mixed",
+				"uiTheme": "vs-dark",
+				"path": "./themes/xresources_bordered_mixed.json",
 				"_watch": true
 			}
 		]
