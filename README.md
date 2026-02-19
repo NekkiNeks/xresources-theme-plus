@@ -2,9 +2,15 @@
 
 This extensions for Visual Studio Code adds a **real time updated theme** that is dynamically generated from the color palette in your existing Xresources file. This fork just adds some changes for `.Xresources` properties, such as `*.background`, `*.foreground` and `*.cursorColor`. I also added some styling minor changes as shadows, shades of some colors and colors of syntax tokens. I Also changed icon as a little joke about simplified gradient logos trend 😛
 
-
 ![Example 1](./screenshots/screenshot.jpg)
 
+## Themes and Colors
+
+There is Two Different themes (Bordered and Normal) in three variants:
+
+- **Light** - uses light versions of `.Xresources` colors `[color8 - color15]` _(preferable for dark themes)_
+- **Dark** - uses dark versions of `.Xresources` colors `[color0 - color7]` _(preferable for light themes)_
+- **Mixed** - uses all colors (may look _not so cool_ on different themes)
 
 ## Features
 
